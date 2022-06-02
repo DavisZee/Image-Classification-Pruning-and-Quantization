@@ -98,7 +98,11 @@ def main():
 
 
 def save_model(model, model_name, quantize):
-    tflite_file = tflite_models_dir / model_name
+    # We want to save our files to the other directory
+    
+    redirect = '../Benchmark'
+
+    tflite_file = tflite_models_dir / redirect / model_name
 
     if quantize:
         model.converter.optimizations = [tf.lite.Optimize.DEFAULT]
