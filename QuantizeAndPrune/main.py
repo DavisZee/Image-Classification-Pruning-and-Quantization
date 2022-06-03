@@ -4,18 +4,18 @@
 # Description: This python file builds and trains InceptionNetV3 models using 
 # the Keras MNIST dataset. Then it prunes, quantizes, and converts 
 # the models and saves them as TFLite models.
+
+# imports
 import tempfile
 from pathlib import Path
-
 from tensorflow.python.ops.numpy_ops import np_config
 import tensorflow.keras as keras
 import tensorflow as tf
-# from tensorflow import keras
 import numpy as np
 import tensorflow_model_optimization as tfmot
 
+# global variables
 tflite_models_dir = Path.cwd()
-
 input_shape = (75, 75, 1)
 
 
