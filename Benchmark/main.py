@@ -1,8 +1,8 @@
 # CSS 490 Final Project Implemntation Part 3
 # Names: Luca de Raad and Davis Zhong
-# Date: 05/29/2022
+# Date: 06/02/2022
 # Description: This python file creates and evaluates four pretrained InceptionNetV3 
-# models using the Keras mnist dataset. Models include normal unmodified InceptionV3,
+# TFLite models using the Keras mnist dataset. Models include normal unmodified InceptionV3,
 # pruned model of InceptionNetV3, quantized model of InceptionNetV3, and both pruned
 # and quantized model of InceptionNetV3.
 

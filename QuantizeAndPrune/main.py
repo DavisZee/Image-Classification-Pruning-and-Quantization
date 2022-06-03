@@ -1,3 +1,9 @@
+# CSS 490 Final Project Implemntation Part 3
+# Names: Luca de Raad and Davis Zhong
+# Date: 06/02/2022
+# Description: This python file builds and trains InceptionNetV3 models using 
+# the Keras MNIST dataset. Then it prunes, quantizes, and converts 
+# the models and saves them as TFLite models.
 import tempfile
 from pathlib import Path
 
@@ -60,14 +66,14 @@ def main():
                                                                  end_step=end_step)
     }
 
-    model_for_pruning = prune_low_magnitude(model, **pruning_params)
+    output_model = prune_low_magnitude(model, **pruning_params)
 
     # `prune_low_magnitude` requires a recompile.
-    model_for_pruning.compile(optimizer='adam',
+    output_model.compile(optimizer='adam',
                               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                               metrics=['accuracy'])
 
-    # model_for_pruning.summary()
+    # output_model.summary()
 
     logdir = tempfile.mkdtemp()
 
@@ -76,7 +82,7 @@ def main():
         tfmot.sparsity.keras.PruningSummaries(log_dir=logdir),
     ]
 
-    model_for_pruning.fit(train_images, train_labels,
+    output_model.fit(train_images, train_labels,
                           batch_size=batch_size, epochs=epochs, validation_split=validation_split,
                           callbacks=callbacks)
 
@@ -87,7 +93,7 @@ def main():
 
     save_model(normal_tflite_model, 'quantized.tflite', True)
 
-    model_for_export = tfmot.sparsity.keras.strip_pruning(model_for_pruning)
+    model_for_export = tfmot.sparsity.keras.strip_pruning(output_model)
 
     converter = tf.lite.TFLiteConverter.from_keras_model(model_for_export)
     pruned_tflite_model = converter.convert()
