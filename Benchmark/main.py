@@ -4,7 +4,7 @@
 # Description: This python file creates and evaluates four pretrained InceptionNetV3 
 # TFLite models using the Keras mnist dataset. Models include normal unmodified InceptionV3,
 # pruned model of InceptionNetV3, quantized model of InceptionNetV3, and both pruned
-# and quantized model of InceptionNetV3.
+# and quantized model of InceptionNetV3. The program is made to be runnable on the Jetson Nano.
 
 
 # imports
