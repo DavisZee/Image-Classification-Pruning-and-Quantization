@@ -1,6 +1,6 @@
 # CSS 490 Final Project Implemntation Part 3
 # Names: Luca de Raad and Davis Zhong
-# Date: 06/02/2022
+# Date: 06/09/2022
 # Description: This python file builds and trains InceptionNetV3 models using 
 # the Keras MNIST dataset. Then it prunes, quantizes, and converts 
 # the models and saves them as TFLite models.
